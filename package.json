@@ -1,0 +1,28 @@
+{
+  "name": "terraform-automatic-environments",
+  "version": "1.0.0",
+  "description": "This project was created to improve all related to terraform environment automation using js technologies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hugolesta/terraform-automatic-environments.git"
+  },
+  "keywords": [
+    "terraform",
+    "automation",
+    "jake.js"
+  ],
+  "author": "Hugo Lesta",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hugolesta/terraform-automatic-environments/issues"
+  },
+  "homepage": "https://github.com/hugolesta/terraform-automatic-environments#readme",
+  "dependencies": {
+    "command-exists": "^1.2.8",
+    "jake": "^10.4.6"
+  }
+}
