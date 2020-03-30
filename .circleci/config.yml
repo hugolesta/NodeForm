@@ -9,7 +9,7 @@ jobs:
       - checkout
       - node/with-cache:
           steps:
-            - run: npm install -g jake
+            - run: sudo npm install -g jake
             - run: npm install
             - run: jake install-tfenv
 workflows:
