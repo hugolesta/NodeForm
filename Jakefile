@@ -7,7 +7,8 @@ task('default', () =>{
     console.log('This is the default task.');
 })
 
-desc('Install tfenv in this S.O if it exists');
+desc('Install tfenv in this S.O if isnt exists');
 task('install-tfenv', async () => {
-    await tfenv.checkIfTfenvWasInstalled() ? console.log("tfenv is already installed") : console.log("tfenv is not installed in your S.O");
+    await tfenv.installTfEnv();
+
 });
