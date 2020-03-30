@@ -32,7 +32,7 @@ const installTfEnv = () => {
                     //Clone tfenv and install manually
                     let cloneCode = await shell.exec(`git clone ${GITURL} ${TFENVPATH}`).code;
                     console.log(`Cloning tfenv repo and it was returned the following code ${cloneCode}`)
-                    if(cloneCode === 0) await shell.exec(`ln -s ${TFENVPATH}/bin/* /usr/local/bin`);
+                    if(cloneCode === 0) await shell.exec(`sudo ln -s ${TFENVPATH}/bin/* /usr/local/bin`);
                     console.log()
                 }
             }
