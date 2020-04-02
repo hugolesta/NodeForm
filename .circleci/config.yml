@@ -13,6 +13,7 @@ jobs:
             - run: npm install
             - run: jake install-tfenv
             - run: tfenv install 0.12.18
+            - run: jake env["dev"] 
 workflows:
     build-and-test:
       jobs:
