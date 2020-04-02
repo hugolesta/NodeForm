@@ -1,4 +1,4 @@
 module.exports = {
-    'GITURL' : "https://github.com/tfutils/tfenv.git",
+    'TFENVGITURL' : "https://github.com/tfutils/tfenv.git",
     'TFENVPATH': "~/.tfenv"
 }
