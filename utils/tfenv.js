@@ -1,7 +1,7 @@
-const GITURL = "https://github.com/tfutils/tfenv.git";
-const TFENVPATH = "~/.tfenv"
+const config = require('./config');
 const commandExists = require('command-exists');
 const shell = require('shelljs');
+
 const checkIfTfenvWasInstalled = (program) => {
     return new Promise( async (resolve, reject ) => {
         try {
@@ -30,10 +30,9 @@ const installTfEnv = () => {
 
                 if(!brewStatus) {
                     //Clone tfenv and install manually
-                    let cloneCode = await shell.exec(`git clone ${GITURL} ${TFENVPATH}`).code;
+                    let cloneCode = await shell.exec(`git clone ${config.GITURL} ${config.TFENVPATH}`).code;
                     console.log(`Cloning tfenv repo and it was returned the following code ${cloneCode}`)
-                    if(cloneCode === 0) await shell.exec(`sudo ln -s ${TFENVPATH}/bin/* /usr/local/bin`);
-                    console.log()
+                    if(cloneCode === 0) await shell.exec(`sudo ln -s ${config.TFENVPATH}/bin/* /usr/local/bin`);
                 }
             }
 
