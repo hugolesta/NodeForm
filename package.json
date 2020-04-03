@@ -23,6 +23,7 @@
   "homepage": "https://github.com/hugolesta/terraform-automatic-environments#readme",
   "dependencies": {
     "command-exists": "^1.2.8",
+    "fs-extra": "^9.0.0",
     "jake": "^10.4.6",
     "shelljs": "^0.8.3"
   }
