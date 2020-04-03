@@ -21,7 +21,6 @@ const createModulesDirectory = (folderName) => {
 const deleteModulesCache = (ModulesFolder) => {
     return new Promise( async (resolve, reject) => {
         try {
-            console.log(ModulesFolder);
             console.log("Deleting modules cache!");
             await fs.readdirSync(ModulesFolder).map(subFolder => {
                 fsextra.remove(`${ModulesFolder}/${subFolder}`);
