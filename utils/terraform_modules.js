@@ -1,7 +1,8 @@
 const config = require('./config');
 const fs = require('fs');
 const fsextra = require('fs-extra');
-const path = require('path')
+const terrafile = require('./terrafile');
+const shell = require('shelljs');
 
 const createModulesDirectory = (folderName) => {
     return new Promise( async (resolve, reject) => {
@@ -33,7 +34,22 @@ const deleteModulesCache = (ModulesFolder) => {
     });
 }
 
+const resolveTerrafileDependencies = (ModulesFolder) =>{
+    return new Promise( async (resolve, reject) =>{
+        try {
+            terrafile.terraform_modules.map(async module => {
+                let cloneCode = await shell.exec(`git clone -b  ${module.version} ${module.source} ${ModulesFolder}/${module.name} > /dev/null 2>&1`).code;
+                if(cloneCode === 0) console.log(`The module ${module.name} has been cloned in ${ModulesFolder}`);
+
+            })
+            resolve();
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
 module.exports = {
     createModulesDirectory,
-    deleteModulesCache
+    deleteModulesCache,
+    resolveTerrafileDependencies
 }
