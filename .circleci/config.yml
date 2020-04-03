@@ -11,7 +11,7 @@ jobs:
           steps:
             - run: sudo npm install -g jake
             - run: npm install
-            - run: jake install-tfenv
+            - run: jake install-tfenv env=dev stack=ec2
             - run: tfenv install 0.12.18
             - run: jake get env=dev stack=ec2
 workflows:
