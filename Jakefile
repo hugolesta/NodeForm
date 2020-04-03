@@ -7,7 +7,7 @@ const shell = require('shelljs');
 const ENV =  process.env.env;
 const VARS = `cd environments/${ENV} && AWS_SDK_LOAD_CONFIG=1`;
 
-if(!ENV) throw Error("You must to add a ENV parameter");
+if(!ENV) throw Error("You must to add a env parameter");
 
 desc('This is the default tak');
 task('default', () =>{
