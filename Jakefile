@@ -23,5 +23,6 @@ task('get', async (folderName) => {
     await modules.createModulesDirectory(folderName);
     let modulesPath = `./environments/${folderName}/modules`;
     await modules.deleteModulesCache(modulesPath);
+    await modules.resolveTerrafileDependencies(modulesPath);
 
 });
