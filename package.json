@@ -25,6 +25,7 @@
     "command-exists": "^1.2.8",
     "fs-extra": "^9.0.0",
     "jake": "^10.4.6",
+    "prompt": "^1.0.0",
     "shelljs": "^0.8.3"
   }
 }
