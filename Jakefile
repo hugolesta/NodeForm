@@ -1,4 +1,4 @@
-let { task, desc, directory} = require('jake');
+let { task, desc} = require('jake');
 const tfenv = require('./utils/tfenv');
 const config = require('./utils/config');
 const environments = require('./utils/environments');
@@ -7,7 +7,7 @@ const symlink = require('./utils/symlinks');
 const shell = require('shelljs');
 const ENV =  process.env.env;
 const VARS = `cd environments/${ENV} && AWS_SDK_LOAD_CONFIG=1`;
-
+const addModuleToTerrafile = require('./utils/addModules');
 let stack = process.env.stack;
 let modulesPath = `./environments/${ENV}/modules`;
 if(!ENV) throw Error("You must to add a env parameter");
@@ -47,4 +47,9 @@ task('destroy',async () => {
     await symlink.removeSymlink(`${__dirname}/environments/${ENV}/common`);
     await symlink.removeSymlink(`${__dirname}/environments/${ENV}/templates`);
     await symlink.removeSymlink(`${__dirname}/environments/${ENV}/keys`);
+});
+
+desc('Add new modules in terrafile.js');
+task('add-module', async () => {
+    await addModuleToTerrafile.addModules();
 });
