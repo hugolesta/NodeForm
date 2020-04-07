@@ -11,6 +11,17 @@ const prepareSymlink = (srcPath,dstPath) => {
     });
 }
 
+const removeSymlink = (dstPath) => {
+    return new Promise( async (resolve, reject) =>{
+        try {
+            await resolve(fs.remove(dstPath))
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+
 module.exports = {
-    prepareSymlink
+    prepareSymlink,
+    removeSymlink
 }
