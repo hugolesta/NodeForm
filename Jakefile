@@ -40,3 +40,11 @@ task('init', async () => {
     await shell.exec(`${VARS} terraform get`);
     await shell.exec(`${VARS} terraform init`);
 });
+
+desc('Only use when you need destroy terraform resources');
+task('destroy',async () => {
+    await shell.exec(`${VARS} terraform destroy`);
+    await symlink.removeSymlink(`${__dirname}/environments/${ENV}/common`);
+    await symlink.removeSymlink(`${__dirname}/environments/${ENV}/templates`);
+    await symlink.removeSymlink(`${__dirname}/environments/${ENV}/keys`);
+});
