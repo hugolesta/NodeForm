@@ -22,8 +22,8 @@ const deleteModulesCache = (ModulesFolder) => {
     return new Promise( async (resolve, reject) => {
         try {
             console.log("Deleting modules cache!");
-            await fs.readdirSync(ModulesFolder).map(subFolder => {
-                fsextra.remove(`${ModulesFolder}/${subFolder}`);
+            await fs.readdirSync(ModulesFolder).map(async subFolder => {
+                await fsextra.removeSync(`${ModulesFolder}/${subFolder}`);
                 console.log(`Subfolder ${subFolder} has been deleted`);
             });
             resolve();
@@ -36,7 +36,7 @@ const deleteModulesCache = (ModulesFolder) => {
 const resolveTerrafileDependencies = (ModulesFolder) =>{
     return new Promise( async (resolve, reject) =>{
         try {
-            terrafile.terraform_modules.map(async module => {
+            await terrafile.terraform_modules.map(async module => {
                 let cloneCode = await shell.exec(`git clone -b  ${module.version} ${module.source} ${ModulesFolder}/${module.name} > /dev/null 2>&1`).code;
                 if(cloneCode === 0) console.log(`The module ${module.name} has been cloned in ${ModulesFolder}`);
             })
