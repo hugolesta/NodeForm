@@ -8,6 +8,7 @@ const shell = require('shelljs');
 const ENV =  process.env.env;
 const VARS = `cd environments/${ENV} && AWS_SDK_LOAD_CONFIG=1`;
 const addModuleToTerrafile = require('./utils/addModules');
+const glob = require('glob');
 let stack = process.env.stack;
 let modulesPath = `./environments/${ENV}/modules`;
 if(!ENV) throw Error("You must to add a env parameter");
@@ -34,11 +35,23 @@ task('get', async () => {
 
 desc('Use init after run the get task')
 task('init', async () => {
-    await symlink.prepareSymlink(`${__dirname}/common`,`${__dirname}/environments/${ENV}/common`);
+
+    await glob(`${__dirname}/common/*.tf`, {}, async (err, files)=>{
+        await files.map(file =>{
+            fileName = file.split('/');
+            symlink.prepareSymlink(file,`${__dirname}/environments/${ENV}/common/${fileName[fileName.length -1]}`);
+        });
+    });
+
     await symlink.prepareSymlink(`${__dirname}/templates`,`${__dirname}/environments/${ENV}/templates`);
     await symlink.prepareSymlink(`${__dirname}/keys`,`${__dirname}/environments/${ENV}/keys`);
     await shell.exec(`${VARS} terraform get`);
     await shell.exec(`${VARS} terraform init`);
+});
+
+desc('Only use when you need check terraform resources');
+task('plan',async () => {
+    await shell.exec(`${VARS} terraform plan`);
 });
 
 desc('Only use when you need destroy terraform resources');
