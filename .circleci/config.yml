@@ -17,8 +17,8 @@ jobs:
             - run: jake get env=dev stack=ec2
             - run: jake init env=dev stack=ec2
             - run: jake plan env=dev stack=ec2
-            - run: jake apply env=dev stack=ec2
-            - run: jake destroy env=dev stack=ec2
+            - run: jake apply env=dev stack=ec2 autoApprove=true
+            - run: jake destroy env=dev stack=ec2 autoApprove=true
 workflows:
     build-and-test:
       jobs:
