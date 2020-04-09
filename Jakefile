@@ -1,12 +1,10 @@
 let { task, desc} = require('jake');
 const tfenv = require('./utils/tfenv');
-const config = require('./utils/config');
 const environments = require('./utils/environments');
 const modules = require('./utils/terraform_modules');
 const symlink = require('./utils/symlinks');
-const shell = require('shelljs');
+const execution = require('./utils/terraformExecution');
 const ENV =  process.env.env;
-const VARS = `cd environments/${ENV} && AWS_SDK_LOAD_CONFIG=1`;
 const addModuleToTerrafile = require('./utils/addModules');
 const glob = require('glob');
 let stack = process.env.stack;
@@ -30,7 +28,7 @@ task('get', async () => {
     await modules.createModulesDirectory(ENV);
     await modules.deleteModulesCache(modulesPath);
     await modules.resolveTerrafileDependencies(modulesPath);
-    await shell.exec(`${VARS} terraform get`);
+    execution.internalProcess('terraform', ['get'],`${__dirname}/environments/${ENV}/`)
 });
 
 desc('Use init after run the get task')
@@ -45,18 +43,33 @@ task('init', async () => {
 
     await symlink.prepareSymlink(`${__dirname}/templates`,`${__dirname}/environments/${ENV}/templates`);
     await symlink.prepareSymlink(`${__dirname}/keys`,`${__dirname}/environments/${ENV}/keys`);
-    await shell.exec(`${VARS} terraform get`);
-    await shell.exec(`${VARS} terraform init`);
+    execution.internalProcess('terraform', ['get'],`${__dirname}/environments/${ENV}/`)
+    execution.internalProcess('terraform', ['init'],`${__dirname}/environments/${ENV}/`)
+
 });
 
 desc('Only use when you need check terraform resources');
 task('plan',async () => {
-    await shell.exec(`${VARS} terraform plan`);
+    let commands = ['plan'];
+    let target = process.env.target;
+    if(process.env.target) commands.push(`-target=${target}`);
+    execution.internalProcess('terraform', commands,`${__dirname}/environments/${ENV}/`)
+});
+
+desc('Only use when you need deploy terraform resources');
+task('apply', () => {
+    let commands = ['plan'];
+    let target = process.env.target;
+    if(process.env.target) commands.push(`-target=${target}`)
+    execution.internalProcess('terraform', ['apply'],`${__dirname}/environments/${ENV}/`)
 });
 
 desc('Only use when you need destroy terraform resources');
 task('destroy',async () => {
-    await shell.exec(`${VARS} terraform destroy`);
+    let commands = ['plan'];
+    let target = process.env.target;
+    if(process.env.target) commands.push(`-target=${target}`)
+    execution.internalProcess('terraform', commands,`${__dirname}/environments/${ENV}/`)
     await symlink.removeSymlink(`${__dirname}/environments/${ENV}/common`);
     await symlink.removeSymlink(`${__dirname}/environments/${ENV}/templates`);
     await symlink.removeSymlink(`${__dirname}/environments/${ENV}/keys`);
