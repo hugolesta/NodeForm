@@ -28,7 +28,7 @@ task('get', async () => {
     await modules.createModulesDirectory(ENV);
     await modules.deleteModulesCache(modulesPath);
     await modules.resolveTerrafileDependencies(modulesPath);
-    execution.internalProcess('terraform', ['get'],`${__dirname}/environments/${ENV}/`)
+    await execution.internalProcess('terraform', ['get'],`${__dirname}/environments/${ENV}/`)
 });
 
 desc('Use init after run the get task')
@@ -43,8 +43,8 @@ task('init', async () => {
 
     await symlink.prepareSymlink(`${__dirname}/templates`,`${__dirname}/environments/${ENV}/templates`);
     await symlink.prepareSymlink(`${__dirname}/keys`,`${__dirname}/environments/${ENV}/keys`);
-    execution.internalProcess('terraform', ['get'],`${__dirname}/environments/${ENV}/`)
-    execution.internalProcess('terraform', ['init'],`${__dirname}/environments/${ENV}/`)
+    await execution.internalProcess('terraform', ['get'],`${__dirname}/environments/${ENV}/`)
+    await execution.internalProcess('terraform', ['init'],`${__dirname}/environments/${ENV}/`)
 
 });
 
@@ -53,7 +53,7 @@ task('plan',async () => {
     let commands = ['plan'];
     let target = process.env.target;
     if(process.env.target) commands.push(`-target=${target}`);
-    execution.internalProcess('terraform', commands,`${__dirname}/environments/${ENV}/`)
+    await execution.internalProcess('terraform', commands,`${__dirname}/environments/${ENV}/`)
 });
 
 desc('Only use when you need deploy terraform resources');
@@ -61,7 +61,7 @@ task('apply', () => {
     let commands = ['plan'];
     let target = process.env.target;
     if(process.env.target) commands.push(`-target=${target}`)
-    execution.internalProcess('terraform', ['apply'],`${__dirname}/environments/${ENV}/`)
+    await execution.internalProcess('terraform', ['apply'],`${__dirname}/environments/${ENV}/`)
 });
 
 desc('Only use when you need destroy terraform resources');
@@ -69,7 +69,7 @@ task('destroy',async () => {
     let commands = ['plan'];
     let target = process.env.target;
     if(process.env.target) commands.push(`-target=${target}`)
-    execution.internalProcess('terraform', commands,`${__dirname}/environments/${ENV}/`)
+    await execution.internalProcess('terraform', commands,`${__dirname}/environments/${ENV}/`)
     await symlink.removeSymlink(`${__dirname}/environments/${ENV}/common`);
     await symlink.removeSymlink(`${__dirname}/environments/${ENV}/templates`);
     await symlink.removeSymlink(`${__dirname}/environments/${ENV}/keys`);
