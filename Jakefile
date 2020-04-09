@@ -43,7 +43,6 @@ task('init', async () => {
 
     await symlink.prepareSymlink(`${__dirname}/templates`,`${__dirname}/environments/${ENV}/templates`);
     await symlink.prepareSymlink(`${__dirname}/keys`,`${__dirname}/environments/${ENV}/keys`);
-    await execution.internalProcess('terraform', ['get'],`${__dirname}/environments/${ENV}/`);
     await execution.internalProcess('terraform', ['init'],`${__dirname}/environments/${ENV}/`);
 
 });

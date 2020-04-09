@@ -15,9 +15,10 @@ jobs:
             - run: tfenv install 0.12.18
             - run: tfenv use 0.12.18
             - run: jake get env=dev stack=ec2
-            - run: jake init env=dev stack=ec2 && jake plan env=dev stack=ec2
-            - run: jake init env=dev stack=ec2 && jake apply env=dev stack=ec2 autoApprove=true
-            - run: jake init env=dev stack=ec2 && jake destroy env=dev stack=ec2 autoApprove=true
+            - run: jake init env=dev stack=ec2
+            - run: jake plan env=dev stack=ec2
+            - run: jake apply env=dev stack=ec2 autoApprove=true
+            - run: jake destroy env=dev stack=ec2 autoApprove=true
 workflows:
     build-and-test:
       jobs:
