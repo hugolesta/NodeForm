@@ -3,14 +3,11 @@ const tfenv = require('./utils/tfenv');
 const environments = require('./utils/environments');
 const modules = require('./utils/terraform_modules');
 const symlink = require('./utils/symlinks');
-const execution = require('./utils/terraformExecution');
-const ENV =  process.env.env;
+const execution = require('./utils/commandExecution');
 const addModuleToTerrafile = require('./utils/addModules');
+const manageCredentials = require('./utils/creadentialsParser');
 const glob = require('glob');
-let stack = process.env.stack;
-let modulesPath = `./environments/${ENV}/modules`;
-if(!ENV) throw Error("You must to add a env parameter");
-if(!stack) throw Error("You must to add stack parameter and one value");
+
 
 desc('This is the default tak');
 task('default', () =>{
@@ -24,6 +21,12 @@ task('install-tfenv', async () => {
 
 desc('Create your environment folder and resolve terrafile');
 task('get', async () => {
+    const ENV =  process.env.env;
+    if(!ENV) throw Error("You must to add a env parameter: for example jake ENV=dev stack=ec2");
+    let modulesPath = `./environments/${ENV}/modules`;
+    let stack = process.env.stack;
+    if(!stack) throw Error("You must to add stack parameter and one value: : for example jake ENV=dev stack=ec2");
+    
     await environments.createEnvironmentFolder(ENV);
     await modules.createModulesDirectory(ENV);
     await modules.deleteModulesCache(modulesPath);
@@ -33,6 +36,12 @@ task('get', async () => {
 
 desc('Use init after run the get task')
 task('init', async () => {
+
+    const ENV =  process.env.env;
+    if(!ENV) throw Error("You must to add a env parameter: for example jake ENV=dev stack=ec2");
+    let modulesPath = `./environments/${ENV}/modules`;
+    let stack = process.env.stack;
+    if(!stack) throw Error("You must to add stack parameter and one value: : for example jake ENV=dev stack=ec2");
 
     await glob(`${__dirname}/common/*.tf`, {}, async (err, files)=>{
         await files.map(file =>{
@@ -49,6 +58,13 @@ task('init', async () => {
 
 desc('Only use when you need check terraform resources');
 task('plan',async () => {
+
+    const ENV =  process.env.env;
+    if(!ENV) throw Error("You must to add a env parameter: for example jake ENV=dev stack=ec2");
+    let modulesPath = `./environments/${ENV}/modules`;
+    let stack = process.env.stack;
+    if(!stack) throw Error("You must to add stack parameter and one value: : for example jake ENV=dev stack=ec2");
+
     let commands = ['plan'];
     let target = process.env.target;
     if(target) commands.push(`-target=${target}`);
@@ -57,6 +73,13 @@ task('plan',async () => {
 
 desc('Only use when you need deploy terraform resources');
 task('apply', async () => {
+
+    const ENV =  process.env.env;
+    if(!ENV) throw Error("You must to add a env parameter: for example jake ENV=dev stack=ec2");
+    let modulesPath = `./environments/${ENV}/modules`;
+    let stack = process.env.stack;
+    if(!stack) throw Error("You must to add stack parameter and one value: : for example jake ENV=dev stack=ec2");
+
     let commands = ['apply'];
     let target = process.env.target;
     let autoApprove = process.env.autoApprove;
@@ -67,6 +90,13 @@ task('apply', async () => {
 
 desc('Only use when you need destroy terraform resources');
 task('destroy',async () => {
+
+    const ENV =  process.env.env;
+    if(!ENV) throw Error("You must to add a env parameter: for example jake ENV=dev stack=ec2");
+    let modulesPath = `./environments/${ENV}/modules`;
+    let stack = process.env.stack;
+    if(!stack) throw Error("You must to add stack parameter and one value: : for example jake ENV=dev stack=ec2");
+
     let commands = ['destroy'];
     let target = process.env.target;
     let autoApprove = process.env.autoApprove;
@@ -81,4 +111,9 @@ task('destroy',async () => {
 desc('Add new modules in terrafile.js');
 task('add-module', async () => {
     await addModuleToTerrafile.addModules();
+});
+
+desc('Manage your aws credentials');
+task('manage-credentials', async () => {
+    await manageCredentials.execute();
 });
