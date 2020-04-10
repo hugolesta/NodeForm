@@ -71,7 +71,6 @@ task('plan',async () => {
 
 desc('Only use when you need deploy terraform resources');
 task('apply', async () => {
-
     const ENV =  process.env.env;
     if(!ENV) throw Error("You must to add a env parameter: for example jake ENV=dev stack=ec2");
     let stack = process.env.stack;
@@ -112,4 +111,9 @@ task('add-module', async () => {
 desc('Manage your aws credentials');
 task('manage-credentials', async () => {
     await manageCredentials.execute();
+});
+
+desc('Check what profile you have selected');
+task('show-selected-credentials', async () => {
+    await manageCredentials.checkProfile();
 });
