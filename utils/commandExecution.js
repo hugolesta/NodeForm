@@ -1,7 +1,9 @@
 
 const { spawn } = require('child_process');
+require('dotenv').config();
 
 const internalProcess = (command, parametersList,path) => {
+    if(!process.env.AWS_PROFILE) throw Error('First you should populate the AWS_PROFILE variable, make sure to execute the manage-credentials task');
     return new Promise(async (resolve, reject) =>{
         try {
             const child =  await spawn(command, parametersList, {cwd: path});
