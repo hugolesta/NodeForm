@@ -39,7 +39,6 @@ task('init', async () => {
 
     const ENV =  process.env.env;
     if(!ENV) throw Error("You must to add a env parameter: for example jake ENV=dev stack=ec2");
-    let modulesPath = `./environments/${ENV}/modules`;
     let stack = process.env.stack;
     if(!stack) throw Error("You must to add stack parameter and one value: : for example jake ENV=dev stack=ec2");
 
@@ -61,7 +60,6 @@ task('plan',async () => {
 
     const ENV =  process.env.env;
     if(!ENV) throw Error("You must to add a env parameter: for example jake ENV=dev stack=ec2");
-    let modulesPath = `./environments/${ENV}/modules`;
     let stack = process.env.stack;
     if(!stack) throw Error("You must to add stack parameter and one value: : for example jake ENV=dev stack=ec2");
 
@@ -76,7 +74,6 @@ task('apply', async () => {
 
     const ENV =  process.env.env;
     if(!ENV) throw Error("You must to add a env parameter: for example jake ENV=dev stack=ec2");
-    let modulesPath = `./environments/${ENV}/modules`;
     let stack = process.env.stack;
     if(!stack) throw Error("You must to add stack parameter and one value: : for example jake ENV=dev stack=ec2");
 
@@ -93,7 +90,6 @@ task('destroy',async () => {
 
     const ENV =  process.env.env;
     if(!ENV) throw Error("You must to add a env parameter: for example jake ENV=dev stack=ec2");
-    let modulesPath = `./environments/${ENV}/modules`;
     let stack = process.env.stack;
     if(!stack) throw Error("You must to add stack parameter and one value: : for example jake ENV=dev stack=ec2");
 
