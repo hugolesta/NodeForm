@@ -4,6 +4,18 @@ const inquirer = require('inquirer');
 const credentialsFilePath = `${require('os').homedir()}/.aws/credentials`;
 const credential = ini.parse(fs.readFileSync(credentialsFilePath, "utf-8"));
 
+const checkProfile = () => {
+  return new Promise( async (resolve, reject) =>{
+    try {
+      let profile = process.env.AWS_PROFILE;
+      if(!profile) console.log(`You haven't selected any profile, please run jake manage-credentials task first`);
+      console.log(`Your selected profile is: ${profile}`);
+    } catch (error) {
+      reject(error);
+    }
+  });
+}
+
 const execute = () => {
   return new Promise( async (resolve, reject) => {
 
@@ -32,5 +44,6 @@ const execute = () => {
 }
 
 module.exports = {
-  execute
+  execute,
+  checkProfile
 }
