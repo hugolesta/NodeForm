@@ -7,7 +7,7 @@ const execution = require('./utils/commandExecution');
 const addModuleToTerrafile = require('./utils/addModules');
 const manageCredentials = require('./utils/creadentialsParser');
 const glob = require('glob');
-
+const config = require('./utils/config');
 
 desc('Install tfenv in this S.O if isnt exists');
 task('install-tfenv', async () => {
@@ -37,10 +37,10 @@ task('init', async () => {
     let stack = process.env.stack;
     if(!stack) throw Error("You must to add stack parameter and one value: : for example jake ENV=dev stack=ec2");
 
-    await glob(`${__dirname}/common/*.tf`, {}, async (err, files)=>{
+    await glob(`${__dirname}/${config.sharedFolder}/*.tf`, {}, async (err, files)=>{
         await files.map(file =>{
             fileName = file.split('/');
-            symlink.prepareSymlink(file,`${__dirname}/environments/${ENV}/common/${fileName[fileName.length -1]}`);
+            symlink.prepareSymlink(file,`${__dirname}/environments/${ENV}/${fileName[fileName.length -1]}`);
         });
     });
 
@@ -93,7 +93,7 @@ task('destroy',async () => {
     if(target) commands.push(`-target=${target}`);
     if(autoApprove === `true`) commands.push(`-auto-approve`);
     await execution.internalProcess('terraform', commands,`${__dirname}/environments/${ENV}/`)
-    await symlink.removeSymlink(`${__dirname}/environments/${ENV}/common`);
+    await symlink.removeSymlink(`${__dirname}/environments/${ENV}/${config.sharedFolder}`);
     await symlink.removeSymlink(`${__dirname}/environments/${ENV}/templates`);
     await symlink.removeSymlink(`${__dirname}/environments/${ENV}/keys`);
 });
