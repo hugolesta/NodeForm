@@ -1,4 +1,4 @@
-let { task, desc} = require('jake');
+const { task, desc} = require('jake');
 const tfenv = require('./utils/tfenv');
 const environments = require('./utils/environments');
 const modules = require('./utils/terraform_modules');
@@ -8,11 +8,6 @@ const addModuleToTerrafile = require('./utils/addModules');
 const manageCredentials = require('./utils/creadentialsParser');
 const glob = require('glob');
 
-
-desc('This is the default tak');
-task('default', () =>{
-    console.log('This is the default task.');
-})
 
 desc('Install tfenv in this S.O if isnt exists');
 task('install-tfenv', async () => {
@@ -55,7 +50,7 @@ task('init', async () => {
 
 });
 
-desc('Only use when you need check terraform resources');
+desc('Only use when you need to check terraform resources status.');
 task('plan',async () => {
 
     const ENV =  process.env.env;
@@ -103,17 +98,17 @@ task('destroy',async () => {
     await symlink.removeSymlink(`${__dirname}/environments/${ENV}/keys`);
 });
 
-desc('Add new modules in terrafile.js');
+desc('Add new modules in terrafile.json, you shall use it in your projects.');
 task('add-module', async () => {
     await addModuleToTerrafile.addModules();
 });
 
-desc('Manage your aws credentials');
+desc('Manage your aws credentials, select some profile and use it.');
 task('manage-credentials', async () => {
     await manageCredentials.execute();
 });
 
-desc('Check what profile you have selected');
+desc('Check what profile you have selected at this moment.');
 task('show-selected-credentials', async () => {
     await manageCredentials.checkProfile();
 });
