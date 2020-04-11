@@ -25,6 +25,7 @@ module.exports = {
     'TFENVPATH': "~/.tfenv",
     'TFBINARY' : "terraform",
     'AWS_REGION': "us-east-1",
+    'sharedFolder': 'shared',
     'promptQuestions' : [
         {name: 'name', required: true, description : "Please add new module name."}, 
         {name: 'source', required: true, description : "Please add new module url."}, 
