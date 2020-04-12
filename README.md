@@ -54,6 +54,8 @@ $ jake manage-credentials
 
 Select the profile you want and press ENTER. This profile will be saves in a new file called `.env`, and a variable called `AWS_PROFILE` will be populated.
 
+If you need to know an example of how to implement .env file you must to check `.env.example`.
+
 ```
 $ jake show-selected-credentials
 ```
