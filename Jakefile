@@ -39,7 +39,7 @@ task('init', async () => {
 
     await glob(`${__dirname}/${config.sharedFolder}/*.tf`, {}, async (err, files)=>{
         await files.map(file =>{
-            fileName = file.split('/');
+            const fileName = file.split('/');
             symlink.prepareSymlink(file,`${__dirname}/environments/${ENV}/${fileName[fileName.length -1]}`);
         });
     });
