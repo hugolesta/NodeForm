@@ -9,5 +9,6 @@ variable "env" {
     project    = "terraform-automation"
     costCenter = "Cloud Emgineers"
     owner      = "default"
+    environment      = "sdx"
   }
 }
