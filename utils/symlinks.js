@@ -2,19 +2,19 @@
 const fs = require("fs-extra");
 
 const prepareSymlink = (srcPath,dstPath) => {
-    return new Promise( async (resolve, reject) =>{
+    return new Promise((resolve, reject) =>{
         try {
-            await resolve(fs.ensureSymlink(srcPath,dstPath));
+            resolve(fs.ensureSymlink(srcPath,dstPath));
         } catch (error) {
             reject(error);
         }
     });
 }
 
-const removeSymlink = (dstPath) => {
-    return new Promise( async (resolve, reject) =>{
+const removeSymlink = (dstPath) =>{
+    return new Promise(  (resolve, reject) =>{
         try {
-            await resolve(fs.remove(dstPath))
+            resolve(fs.remove(dstPath))
         } catch (error) {
             reject(error);
         }
