@@ -7,7 +7,7 @@ const schema = Joi.object().keys({
                 .max(30)
                 .required(),
     source: Joi.string()
-                .pattern(/^([A-Za-z0-9]+@|http(|s)\:\/\/)([A-Za-z0-9.]+(:\d+)?)(?::|\/)([\d\/\w.-]+?)(\.git)?$/i)
+                .pattern(/^([A-Za-z0-9]+@|http(|s):\/\/)([A-Za-z0-9.]+(:\d+)?)(?::|\/)([\d/\w.-]+?)(\.git)?$/i)
                 .min(3)
                 .max(60)
                 .required(),
