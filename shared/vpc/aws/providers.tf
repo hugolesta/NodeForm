@@ -1,0 +1,1 @@
+/Users/hugolest/Projects/terraform-automatic-environments/shared/providers.tf
