@@ -41,9 +41,11 @@ task('init', async () => {
         await files.map(file =>{
             const fileName = file.split('/');
             symlink.prepareSymlink(file,`${__dirname}/environments/${ENV}/${fileName[fileName.length -1]}`);
+            symlink.prepareSymlink(file,`${__dirname}/environments/${ENV}/vpc/${fileName[fileName.length -1]}`);
         });
     });
 
+    await symlink.prepareSymlink(`${__dirname}/${config.sharedFolder}/vpc/aws`,`${__dirname}/environments/${ENV}/vpc`);
     await symlink.prepareSymlink(`${__dirname}/templates`,`${__dirname}/environments/${ENV}/templates`);
     await symlink.prepareSymlink(`${__dirname}/keys`,`${__dirname}/environments/${ENV}/keys`);
     await execution.internalProcess('terraform', ['init'],`${__dirname}/environments/${ENV}/`);
