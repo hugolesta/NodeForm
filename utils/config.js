@@ -2,7 +2,6 @@ const Joi = require('@hapi/joi');
 
 const schema = Joi.object().keys({
     name: Joi.string()
-                .alphanum()
                 .min(3)
                 .max(30)
                 .required(),
@@ -12,7 +11,6 @@ const schema = Joi.object().keys({
                 .max(60)
                 .required(),
     version: Joi.string()
-                .alphanum()
                 .min(3)
                 .max(30)
                 .required()
