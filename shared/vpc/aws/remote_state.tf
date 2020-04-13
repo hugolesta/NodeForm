@@ -1,1 +1,0 @@
-/Users/hugolest/Projects/terraform-automatic-environments/shared/remote_state.tf
