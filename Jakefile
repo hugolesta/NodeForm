@@ -22,7 +22,7 @@ task('get', async () => {
     let stack = process.env.stack;
     if(!stack) throw Error("You must to add stack parameter and one value: : for example jake ENV=dev stack=ec2");
     
-    await environments.createEnvironmentFolder(ENV);
+    await environments.createEnvironmentFolder(ENV,stack);
     await modules.createModulesDirectory(ENV);
     await modules.deleteModulesCache(modulesPath);
     await modules.resolveTerrafileDependencies(modulesPath);
@@ -40,7 +40,7 @@ task('init', async () => {
     await glob(`${__dirname}/${config.sharedFolder}/*.tf`, {}, async (err, files)=>{
         await files.map(file =>{
             const fileName = file.split('/');
-            symlink.prepareSymlink(file,`${__dirname}/environments/${ENV}/${fileName[fileName.length -1]}`);
+            symlink.prepareSymlink(file,`${__dirname}/environments/${ENV}/${stack}/${fileName[fileName.length -1]}`);
             symlink.prepareSymlink(file,`${__dirname}/environments/${ENV}/vpc/${fileName[fileName.length -1]}`);
         });
     });
