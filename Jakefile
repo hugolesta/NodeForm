@@ -21,6 +21,7 @@ task('get', async () => {
     if(!ENV) await ask.askForEnv();
     let STACK = process.env.STACK;
     if(!STACK) await ask.askForStack();
+    let modulesPath = `./environments/${ENV}/modules`;
     
     await environments.createEnvironmentFolder(ENV,STACK);
     await modules.createModulesDirectory(ENV);
