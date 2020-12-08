@@ -22,7 +22,7 @@ task('get', async () => {
     let STACK = process.env.STACK;
     if(!STACK) await ask.askForStack();
     
-    await environments.createEnvironmentFolder(ENV,stack);
+    await environments.createEnvironmentFolder(ENV,STACK);
     await modules.createModulesDirectory(ENV);
     await modules.deleteModulesCache(modulesPath);
     await modules.resolveTerrafileDependencies(modulesPath);
