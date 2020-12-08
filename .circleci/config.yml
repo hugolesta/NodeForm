@@ -14,11 +14,11 @@ jobs:
             - run: jake install-tfenv env=dev stack=ec2
             - run: tfenv install 0.12.18
             - run: tfenv use 0.12.18
-            - run: AWS_PROFILE=testing-pipeline jake get env=dev stack=ec2
-            - run: AWS_PROFILE=testing-pipeline jake init env=dev stack=ec2
-            - run: AWS_PROFILE=testing-pipeline jake plan env=dev stack=ec2
-            - run: AWS_PROFILE=testing-pipeline jake apply env=dev stack=ec2 autoApprove=true
-            - run: AWS_PROFILE=testing-pipeline jake destroy env=dev stack=ec2 autoApprove=true
+            - run: AWS_PROFILE=testing-pipeline ENV=dev STACK=ec2 jake get env=dev stack=ec2
+            - run: AWS_PROFILE=testing-pipeline ENV=dev STACK=ec2 jake init env=dev stack=ec2
+            - run: AWS_PROFILE=testing-pipeline ENV=dev STACK=ec2 jake plan env=dev stack=ec2
+            - run: AWS_PROFILE=testing-pipeline ENV=dev STACK=ec2 jake apply env=dev stack=ec2 autoApprove=true
+            - run: AWS_PROFILE=testing-pipeline ENV=dev STACK=ec2 jake destroy env=dev stack=ec2 autoApprove=true
 workflows:
     build-and-test:
       jobs:
