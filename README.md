@@ -1,6 +1,6 @@
-# terraform-automatic-environments
+# NodeForm
 
-[![CircleCI](https://circleci.com/gh/hugolesta/terraform-automatic-environments.svg?style=svg&circle-token=7f8c34093c3f6216505ded4e3bdf73272f85405b)](https://circleci.com/gh/hugolesta/workflows/terraform-automatic-environments)
+[![CircleCI](https://circleci.com/gh/hugolesta/NodeForm.svg?style=svg&circle-token=7f8c34093c3f6216505ded4e3bdf73272f85405b)](https://circleci.com/gh/hugolesta/workflows/NodeForm)
 
 ---
 This project was created to help everybody who want to manage terraform easy, reliable way. 
@@ -92,29 +92,29 @@ This option will ask you some information like the following.
   +  Release version for the module previously added.
 
 ```
-$ jake get env=dev stack=ec2
+$ jake get
 ```
 It'll create a new folder called dev with common files inside, it also create the terraform modules added in `terrafile.json` in a new folder called `modules`
 
 ```
-$ jake init env=dev stack=ec2
+$ jake init
 ```
 
 It'll share common terraform files between different environment folders, after that, It'll init your project downloading all the terraform providers and plugins.
 
 ```
-$ jake plan env=dev stack=ec2
+$ jake plan
 ```
 
 It'll list all your terraform infrastructure changes.
 
 ```
-$ jake apply env=dev stack=ec2
+$ jake apply
 ```
 It'll deploy all your terraform infrastructure using the previous profile setted.
 
 ```
-$ jake destroy env=dev stack=ec2
+$ jake destroy
 ```
 
 It'll destroy all your terraform infrastructure using the previous profile setted.
