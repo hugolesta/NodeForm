@@ -49,7 +49,7 @@ task('init', async () => {
     await symlink.prepareSymlink(`${__dirname}/${config.sharedFolder}/vpc/aws`,`${__dirname}/environments/${ENV}/vpc`);
     await symlink.prepareSymlink(`${__dirname}/templates`,`${__dirname}/environments/${ENV}/templates`);
     await symlink.prepareSymlink(`${__dirname}/keys`,`${__dirname}/environments/${ENV}/keys`);
-    await execution.internalProcess('terraform', ['init'],`${__dirname}/environments/${ENV}/`);
+    await execution.internalProcess('terraform', ['init'],`${__dirname}/environments/${ENV}/${STACK}`);
 
 });
 
@@ -64,7 +64,7 @@ task('plan',async () => {
     let commands = ['plan'];
     let target = process.env.target;
     if(target) commands.push(`-target=${target}`);
-    await execution.internalProcess('terraform', commands,`${__dirname}/environments/${ENV}/`)
+    await execution.internalProcess('terraform', commands,`${__dirname}/environments/${ENV}/${STACK}`)
 });
 
 desc('Only use when you need deploy terraform resources');
@@ -79,7 +79,7 @@ task('apply', async () => {
     let autoApprove = process.env.autoApprove;
     if(target) commands.push(`-target=${target}`);
     if(autoApprove === `true`) commands.push(`-auto-approve`);
-    await execution.internalProcess('terraform', commands,`${__dirname}/environments/${ENV}/`)
+    await execution.internalProcess('terraform', commands,`${__dirname}/environments/${ENV}/${STACK}`)
 });
 
 desc('Only use when you need destroy terraform resources');

@@ -1,8 +1,8 @@
-data "terraform_remote_state" "vpc_state" {
-  backend = "s3"
-  config = {
-    bucket = "terraform-nito-dev-vpc-tfstate"
-    key = "nito/dev/terraform.sfstate"
-    region = "us-east-1"
-  }
-}
+module "terraform_state_backend" {
+   source       = "git::https://github.com/cloudposse/terraform-aws-tfstate-backend.git?ref=0.28.0"
+   namespace    = var.env["namespace"]
+   stage        = var.env["stage"]
+   name         = var.env["name"]
+   attributes   = ["state"]
+   force_destroy = false
+ }
