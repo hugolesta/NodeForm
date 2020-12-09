@@ -1,13 +1,20 @@
 # NodeForm
 
 [![CircleCI](https://circleci.com/gh/hugolesta/NodeForm.svg?style=svg&circle-token=7f8c34093c3f6216505ded4e3bdf73272f85405b)](https://circleci.com/gh/hugolesta/workflows/NodeForm)
-
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/hugolesta/NodeForm/blob/master/LICENSE)
+[![GitHub issues](https://img.shields.io/github/issues/hugolesta/NodeForm?style=plastic)](https://github.com/hugolesta/NodeForm/issues)
 ---
 This project was created to help everybody who want to manage terraform easy, reliable way. 
 
-This implementation will be developed using languages like Javascript and HCP. In this fist case we focus in  terraform for managing infrastructure in AWS (Amazon web services) but you shouln't have issues running this solution with another cloud providers like Google Cloud or Azure.
+This implementation will be developed using languages like Javascript and HCL. In this fist case we focus in  terraform for managing infrastructure in AWS (Amazon web services) but you shouln't have issues running this solution with another cloud providers like Google Cloud or Azure.
 
 This project was fully tested in Linux and MacOS S.O, we don't know if it work properly in S.O like Windows.
+
+# Requirements
+
+- [Nodejs](https://nodejs.org/en/) should be installed
+- [tfenv](https://github.com/tfutils/tfenv) should be installed, we have a task called `jake install-tfenv` check extra information below
+
 
 # Usage
 
