@@ -1,7 +1,7 @@
 # NodeForm
 
 [![CircleCI](https://circleci.com/gh/hugolesta/NodeForm.svg?style=svg&circle-token=7f8c34093c3f6216505ded4e3bdf73272f85405b)](https://circleci.com/gh/hugolesta/workflows/NodeForm)
-
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/hugolesta/NodeForm/blob/master/LICENSE)
 ---
 This project was created to help everybody who want to manage terraform easy, reliable way. 
 
