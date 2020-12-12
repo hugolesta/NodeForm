@@ -3,6 +3,9 @@
 [![CircleCI](https://circleci.com/gh/hugolesta/NodeForm.svg?style=svg&circle-token=7f8c34093c3f6216505ded4e3bdf73272f85405b)](https://circleci.com/gh/hugolesta/workflows/NodeForm)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/hugolesta/NodeForm/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/hugolesta/NodeForm?style=plastic)](https://github.com/hugolesta/NodeForm/issues)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com) 
+[![codecov](https://codecov.io/gh/hugolesta/NodeForm/branch/master/graph/badge.svg)](https://codecov.io/gh/hugolesta/NodeForm)
+
 ---
 This project was created to help everybody who want to manage terraform easy, reliable way. 
 
