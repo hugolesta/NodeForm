@@ -11,7 +11,7 @@ jobs:
           steps:
             - run: sudo npm install -g jake
             - run: sudo npm install -g jest
-            - run: npm install codecov --save-dev
+            - run: npm install -g codecov
             - run: npm install
             - run: jest --ci --coverage --passWithNoTests && codecov -t $CODECOV_TOKEN
             - run: jake install-tfenv env=dev stack=ec2
