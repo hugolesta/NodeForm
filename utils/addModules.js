@@ -10,7 +10,7 @@ const writeTerrafile = (name, source, version, dependencies = []) => {
             await fs.writeFile('./utils/terrafile.json',JSON.stringify(terrafile), (err) =>{
                 if(err) throw err;
             });
-            resolve();
+            resolve({status: 200, function: "writeTerrafile"});
         } catch (error) {
             reject(error);
         }
@@ -35,5 +35,6 @@ const addModules = () => {
 }
 
 module.exports = {
-    addModules
+    addModules,
+    writeTerrafile
 }

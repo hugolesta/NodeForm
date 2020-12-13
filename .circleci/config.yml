@@ -10,7 +10,10 @@ jobs:
       - node/with-cache:
           steps:
             - run: sudo npm install -g jake
+            - run: sudo npm install -g jest
+            - run: sudo npm install -g codecov
             - run: npm install
+            - run: jest --ci --coverage --passWithNoTests && codecov -t $CODECOV_TOKEN
             - run: jake install-tfenv env=dev stack=ec2
             - run: tfenv install 0.12.18
             - run: tfenv use 0.12.18
