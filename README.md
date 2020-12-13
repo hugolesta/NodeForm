@@ -1,5 +1,6 @@
 # NodeForm
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3ad60a63738b42da90c82c5cbd8feb13)](https://app.codacy.com/gh/hugolesta/NodeForm?utm_source=github.com&utm_medium=referral&utm_content=hugolesta/NodeForm&utm_campaign=Badge_Grade)
 [![CircleCI](https://circleci.com/gh/hugolesta/NodeForm.svg?style=svg&circle-token=7f8c34093c3f6216505ded4e3bdf73272f85405b)](https://circleci.com/gh/hugolesta/workflows/NodeForm)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/hugolesta/NodeForm/blob/master/LICENSE)
 [![GitHub issues](https://img.shields.io/github/issues/hugolesta/NodeForm?style=plastic)](https://github.com/hugolesta/NodeForm/issues)
