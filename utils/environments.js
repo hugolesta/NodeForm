@@ -1,5 +1,5 @@
-const fs = require('fs');
-const fsExtra = require('fs-extra');
+const fs = require("fs");
+const fsExtra = require("fs-extra");
 
 const createEnvironmentFolder = (folderName,stack) => {
     return new Promise( (resolve, reject) => {
@@ -12,11 +12,11 @@ const createEnvironmentFolder = (folderName,stack) => {
                 console.log(`Folder ./environments/${folderName} has been created`);
             };
             if(!fsExtra.ensureFileSync(vpcTfvarsFile)){
-                fs.openSync(vpcTfvarsFile,'w');
+                fs.openSync(vpcTfvarsFile,"w");
                 console.log(`The file ${vpcTfvarsFile} has been created inside stack ${stack}`);
             }
             if(!fsExtra.ensureFileSync(tfvarsFile)) {
-                fs.openSync(tfvarsFile,'w');
+                fs.openSync(tfvarsFile,"w");
                 console.log(`The file ${folderName}.auto.tfvars has been created`);
             }
             resolve();

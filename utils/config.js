@@ -1,4 +1,4 @@
-const Joi = require('@hapi/joi');
+const Joi = require("@hapi/joi");
 
 const schema = Joi.object().keys({
     name: Joi.string()
@@ -19,15 +19,15 @@ const schema = Joi.object().keys({
 
 
 module.exports = {
-    'TFENVGITURL' : "https://github.com/tfutils/tfenv.git",
-    'TFENVPATH': "~/.tfenv",
-    'TFBINARY' : "terraform",
-    'AWS_REGION': "us-east-1",
-    'sharedFolder': 'shared',
-    'promptQuestions' : [
-        {name: 'name', required: true, description : "Please add new module name."}, 
-        {name: 'source', required: true, description : "Please add new module url."}, 
-        {name: 'version', required: true, description : "Please add new module release version."}, 
+    "TFENVGITURL" : "https://github.com/tfutils/tfenv.git",
+    "TFENVPATH": "~/.tfenv",
+    "TFBINARY" : "terraform",
+    "AWS_REGION": "us-east-1",
+    "sharedFolder": "shared",
+    "promptQuestions" : [
+        {name: "name", required: true, description : "Please add new module name."}, 
+        {name: "source", required: true, description : "Please add new module url."}, 
+        {name: "version", required: true, description : "Please add new module release version."}, 
     ],
-    'schema': schema
+    "schema": schema
 }

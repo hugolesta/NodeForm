@@ -1,6 +1,6 @@
-const config = require('./config');
-const commandExists = require('command-exists');
-const shell = require('shelljs');
+const config = require("./config");
+const commandExists = require("command-exists");
+const shell = require("shelljs");
 
 const checkIfTfenvWasInstalled = (program) => {
     return new Promise( async (resolve, reject ) => {
@@ -19,14 +19,14 @@ const checkIfTfenvWasInstalled = (program) => {
 };
 
 const installTfEnv = () => {
-    return new Promise( async (resolve, reject) =>{
+    return new Promise( async (resolve, reject) => {
         try {
             //check if tfenv was installed.
-            let tfenvStatus = await checkIfTfenvWasInstalled('tfenv');
+            let tfenvStatus = await checkIfTfenvWasInstalled("tfenv");
             
             if(!tfenvStatus) {
 
-                let brewStatus = await checkBrewExists('tfenv');
+                let brewStatus = await checkBrewExists("tfenv");
 
                 if(!brewStatus) {
                     //Clone tfenv and install manually
@@ -45,7 +45,7 @@ const installTfEnv = () => {
 const checkBrewExists = (program) => {
     return new Promise( async (resolve, reject) => {
         try {
-            let brewStatus = await checkIfTfenvWasInstalled('brew');
+            let brewStatus = await checkIfTfenvWasInstalled("brew");
             if(brewStatus) {
                 let status = await shell.exec(`brew install ${program}`);
                 console.log(`bre return the following code: ${status.code}`);
