@@ -27,7 +27,7 @@ const deleteModulesCache = (ModulesFolder) => {
             reject(error);
         }
     });
-}
+};
 
 const resolveTerrafileDependencies = (ModulesFolder) => {
     return new Promise( async (resolve, reject) => {
@@ -41,9 +41,9 @@ const resolveTerrafileDependencies = (ModulesFolder) => {
             reject(error);
         }
     });
-}
+};
 module.exports = {
     createModulesDirectory,
     deleteModulesCache,
     resolveTerrafileDependencies
-}
+};

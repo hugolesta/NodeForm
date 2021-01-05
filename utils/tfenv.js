@@ -16,8 +16,7 @@ const checkIfTfenvWasInstalled = (program) => {
 };
 
 const checkBrewExists = (program) => {
-    return new Promise( async (resolve, reject) => {
-        try {
+    return new Promise( async (resolve) => {
             let brewStatus = await checkIfTfenvWasInstalled("brew");
             if(brewStatus) {
                 let status = await shell.exec(`brew install ${program}`);
@@ -26,9 +25,7 @@ const checkBrewExists = (program) => {
             } else {
                 resolve(false);
             }
-        } catch (error) {
-            reject(error);
-        }
+        
     });
 };
 
@@ -49,6 +46,7 @@ const installTfEnv = () => {
                     if(cloneCode === 0) {await shell.exec(`sudo ln -s ${config.TFENVPATH}/bin/* /usr/local/bin`);}
                 }
             }
+            resolve()
 
         } catch (error) {
             reject(error);
