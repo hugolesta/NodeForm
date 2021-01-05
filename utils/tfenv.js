@@ -16,20 +16,6 @@ const checkIfTfenvWasInstalled = (program) => {
 };
 
 const checkBrewExists = (program) => {
-    return new Promise( async (resolve) => {
-            let brewStatus = await checkIfTfenvWasInstalled("brew");
-            if(brewStatus) {
-                let status = await shell.exec(`brew install ${program}`);
-                console.info(`brew return the following code: ${status.code}`);
-                resolve(true);
-            } else {
-                resolve(false);
-            }
-        
-    });
-};
-
-const checkBrewExists = (program) => {
     return new Promise( async (resolve, reject) => {
         try {
             let brewStatus = await checkIfTfenvWasInstalled("brew");
