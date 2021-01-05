@@ -1,5 +1,4 @@
-
-const { spawn } = require("child_process");
+const spawn  = require("child_process").spawn;
 require("dotenv").config();
 
 const internalProcess = (command, parametersList,path) => {

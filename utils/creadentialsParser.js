@@ -18,7 +18,6 @@ const checkProfile = () => {
 
 const execute = () => {
   return new Promise( async (resolve, reject) => {
-    let credential = ini.parse(fs.readFileSync(credentialsFilePath, "utf-8"));
 
     try {
       inquirer
@@ -27,7 +26,7 @@ const execute = () => {
           type: "list",
           name: "credential",
           message: "Please select your aws profile.",
-          choices: Object.keys(credential)
+          choices: Object.keys(ini.parse(fs.readFileSync(credentialsFilePath, "utf-8")))
         },
       ])
       .then(async (answers) => {

@@ -6,7 +6,7 @@ const shell = require("shelljs");
 const createModulesDirectory = (folderName) => {
     return new Promise( async (resolve, reject) => {
         try {
-            const path = `./environments/${folderName}/modules`;
+            const path = `${__dirname}/../environments/${folderName}/modules`;
             if(!fs.existsSync(path)) {
                 resolve(await fs.mkdirSync(path));
                 console.log(`Folder ${path} has been created`);
