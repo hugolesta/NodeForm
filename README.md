@@ -14,8 +14,8 @@ This project was fully tested in Linux and MacOS S.O, we don't know if it work p
 
 # Requirements
 
-- [Nodejs](https://nodejs.org/en/) should be installed
-- [tfenv](https://github.com/tfutils/tfenv) should be installed, we have a task called `jake install-tfenv` check extra information below
+-   [Nodejs](https://nodejs.org/en/) should be installed
+-   [tfenv](https://github.com/tfutils/tfenv) should be installed, we have a task called `jake install-tfenv` check extra information below
 
 
 # Usage
@@ -96,9 +96,9 @@ You should add some modules for allow use it.
 
 This option will ask you some information like the following.
 
-  +  Terraform module name
-  +  Repo url, it allow https and ssh git links.
-  +  Release version for the module previously added.
++   Terraform module name
++   Repo url, it allow https and ssh git links.
++   Release version for the module previously added.
 
 ```
 $ jake get
