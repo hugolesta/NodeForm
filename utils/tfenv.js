@@ -46,7 +46,7 @@ const installTfEnv = () => {
                     if(cloneCode === 0) {await shell.exec(`sudo ln -s ${config.TFENVPATH}/bin/* /usr/local/bin`);}
                 }
             }
-            resolve()
+            resolve();
 
         } catch (error) {
             reject(error);
