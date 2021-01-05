@@ -14,8 +14,8 @@ This project was fully tested in Linux and MacOS S.O, we don't know if it work p
 
 ## Requirements
 
-- [Nodejs](https://nodejs.org/en/) should be installed.
-- [tfenv](https://github.com/tfutils/tfenv) should be installed, we have a task called `jake install-tfenv` check extra information below.
+-   [Nodejs](https://nodejs.org/en/) should be installed.
+-   [tfenv](https://github.com/tfutils/tfenv) should be installed, we have a task called `jake install-tfenv` check extra information below.
 
 ## Usage
 
