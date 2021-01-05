@@ -31,7 +31,7 @@ const execute = () => {
       ])
       .then(async (answers) => {
         await fs.writeFileSync("./.env",`AWS_PROFILE=${answers.credential}`, (err) => {
-          if(err) {throw err}
+          if(err) {throw err;}
       });
         console.info(`You've selected the following profile: ${answers.credential}`);
       });

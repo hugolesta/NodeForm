@@ -5,7 +5,7 @@ const createEnvironmentFolder = (folderName,stack) => {
         try {
             let tfvarsFile = `${__dirname}/../environments/${folderName}/${stack}/${folderName}.auto.tfvars`;
             let vpcTfvarsFile = `${__dirname}/../environments/${folderName}/vpc/${folderName}.auto.tfvars`;
-            if (!fs.existsSync(`${__dirname}/../environments/`)) {fs.mkdirSync("./environments/")}
+            if (!fs.existsSync(`${__dirname}/../environments/`)) {fs.mkdirSync("./environments/");}
             if (!fs.existsSync(`${__dirname}/../environments/${folderName}`)) {
                 fs.mkdirSync(`${__dirname}/../environments/${folderName}`);
                 console.info(`Folder ·/environments/${folderName} has been created`);
@@ -27,4 +27,4 @@ const createEnvironmentFolder = (folderName,stack) => {
 
 module.exports = {
     createEnvironmentFolder
-}
+};

@@ -62,4 +62,4 @@ const installTfEnv = () => {
 module.exports = {
     checkIfTfenvWasInstalled,
     installTfEnv
-}
+};

@@ -19,9 +19,9 @@ const removeSymlink = (dstPath) => {
             reject(error);
         }
     });
-}
+};
 
 module.exports = {
     prepareSymlink,
     removeSymlink
-}
+};
