@@ -1,13 +1,13 @@
-const fs = require('fs');
-const terrafile = require('./terrafile.json');
-const prompt = require('prompt');
-const config = require('./config');
+const fs = require("fs");
+const terrafile = require("./terrafile.json");
+const prompt = require("prompt");
+const config = require("./config");
 
 const writeTerrafile = (name, source, version, dependencies = []) => {
     return new Promise( async (resolve, reject) => {
         try {
             await terrafile.terraform_modules.push({"name": name, "source": source, "version": version});
-            await fs.writeFile('./utils/terrafile.json',JSON.stringify(terrafile), (err) =>{
+            await fs.writeFile("./utils/terrafile.json",JSON.stringify(terrafile), (err) => {
                 if(err) throw err;
             });
             resolve({status: 200, function: "writeTerrafile"});
@@ -18,10 +18,10 @@ const writeTerrafile = (name, source, version, dependencies = []) => {
 }
 
 const addModules = () => {
-    return new Promise( async (resolve, reject) =>{
+    return new Promise( async (resolve, reject) => {
         try {
             prompt.start();
-            prompt.get(config.promptQuestions, async (err, result) =>{
+            prompt.get(config.promptQuestions, async (err, result) => {
                 if(err) throw Error("Error on prompt.")
                 await config.schema.validateAsync(result);
                 let {name, source, version} = result;
