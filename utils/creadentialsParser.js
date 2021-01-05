@@ -4,7 +4,7 @@ const inquirer = require("inquirer");
 const credentialsFilePath = `${require("os").homedir()}/.aws/credentials`;
 
 const checkProfile = () => {
-  return new Promise( async (resolve) => {
+  return new Promise( async (resolve,reject) => {
       let profile = process.env.AWS_PROFILE;
       if(!profile) {reject("You haven't selected any profile, please run jake manage-credentials task first");}
       console.log(`Your selected profile is: ${profile}`);
