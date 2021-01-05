@@ -9,7 +9,7 @@ const prepareSymlink = (srcPath,dstPath) => {
             reject(error);
         }
     });
-}
+};
 
 const removeSymlink = (dstPath) => {
     return new Promise(  (resolve, reject) => {

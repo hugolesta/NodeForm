@@ -6,4 +6,4 @@ const sleep = (ms) => {
 
 module.exports = {
     sleep
-}
+};

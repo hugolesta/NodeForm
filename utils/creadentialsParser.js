@@ -7,7 +7,7 @@ const checkProfile = () => {
   return new Promise( async (resolve, reject) => {
     try {
       let profile = process.env.AWS_PROFILE;
-      if(!profile) {console.log("You haven't selected any profile, please run jake manage-credentials task first")}
+      if(!profile) {console.log("You haven't selected any profile, please run jake manage-credentials task first");}
       console.log(`Your selected profile is: ${profile}`);
       resolve();
     } catch (error) {
@@ -41,9 +41,9 @@ const execute = () => {
     }
     
   });
-}
+};
 
 module.exports = {
   execute,
   checkProfile
-}
+};

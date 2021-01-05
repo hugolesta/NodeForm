@@ -33,7 +33,7 @@ const checkBrewExists = (program) => {
             reject(error);
         }
     });
-}
+};
 
 const installTfEnv = () => {
     return new Promise( async (resolve, reject) => {
@@ -49,7 +49,7 @@ const installTfEnv = () => {
                     //Clone tfenv and install manually
                     let cloneCode = await shell.exec(`git clone ${config.TFENVGITURL} ${config.TFENVPATH}`).code;
                     console.log(`Cloning tfenv repo and it was returned the following code ${cloneCode}`);
-                    if(cloneCode === 0) {await shell.exec(`sudo ln -s ${config.TFENVPATH}/bin/* /usr/local/bin`)}
+                    if(cloneCode === 0) {await shell.exec(`sudo ln -s ${config.TFENVPATH}/bin/* /usr/local/bin`);}
                 }
             }
 
