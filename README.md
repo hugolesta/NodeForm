@@ -12,7 +12,11 @@ This implementation will be developed using languages like Javascript and HCL. I
 
 This project was fully tested in Linux and MacOS S.O, we don't know if it work properly in S.O like Windows.
 
+
 ## Requirements
+
+-   [Nodejs](https://nodejs.org/en/) should be installed
+-   [tfenv](https://github.com/tfutils/tfenv) should be installed, we have a task called `jake install-tfenv` check extra information below
 
 -   [Nodejs](https://nodejs.org/en/) should be installed.
 -   [tfenv](https://github.com/tfutils/tfenv) should be installed, we have a task called `jake install-tfenv` check extra information below.
@@ -96,6 +100,7 @@ This option will ask you some information like the following.
 -   Terraform module name
 -   Repo url, it allow https and ssh git links.
 -   Release version for the module previously added.
+
 
 ```bash
  jake get
