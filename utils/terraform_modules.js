@@ -38,7 +38,7 @@ const resolveTerrafileDependencies = (ModulesFolder) => {
         try {
             await terrafile.terraform_modules.map(async (module) => {
                 let cloneCode = await shell.exec(`git clone -b  ${module.version} ${module.source} ${ModulesFolder}/${module.name} > /dev/null 2>&1`).code;
-                if(cloneCode === 0) {console.log(`The module ${module.name} has been cloned in ${ModulesFolder}`)};
+                if(cloneCode === 0) {console.log(`The module ${module.name} has been cloned in ${ModulesFolder}`)}
             });
             resolve();
         } catch (error) {

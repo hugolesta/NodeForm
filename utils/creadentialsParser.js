@@ -7,7 +7,7 @@ const checkProfile = () => {
   return new Promise( async (resolve, reject) => {
     try {
       let profile = process.env.AWS_PROFILE;
-      if(!profile) {console.log("You haven't selected any profile, please run jake manage-credentials task first")};
+      if(!profile) {console.log("You haven't selected any profile, please run jake manage-credentials task first")}
       console.log(`Your selected profile is: ${profile}`);
       resolve();
     } catch (error) {
@@ -32,7 +32,7 @@ const execute = () => {
       ])
       .then(async (answers) => {
         await fs.writeFileSync("./.env",`AWS_PROFILE=${answers.credential}`, (err) => {
-          if(err) {throw err};
+          if(err) {throw err}
       });
         console.info(`You've selected the following profile: ${answers.credential}`);
       });

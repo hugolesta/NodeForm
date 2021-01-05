@@ -11,7 +11,7 @@ const askForEnv = () => {
                 }
                 ]).then(async (answers) => {
                         await fs.appendFile("./.env",`\nENV=${answers.env}`, (err) => {
-                            if(err) {throw err};
+                            if(err) {throw err}
                         });
                     });
             
@@ -33,7 +33,7 @@ const askForStack = () => {
                 }
             ]).then(async answers => {
                 await fs.appendFile("./.env",`\nSTACK=${answers.stack}`, (err) => {
-                    if(err) throw err;
+                    if(err) {throw err}
                 })
             });
             
