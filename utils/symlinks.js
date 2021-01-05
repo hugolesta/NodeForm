@@ -14,7 +14,7 @@ const prepareSymlink = (srcPath,dstPath) => {
 const removeSymlink = (dstPath) => {
     return new Promise(  (resolve, reject) => {
         try {
-            resolve(fs.remove(dstPath))
+            resolve(fs.remove(dstPath));
         } catch (error) {
             reject(error);
         }

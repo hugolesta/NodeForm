@@ -9,18 +9,18 @@ const askForEnv = () => {
                 name: "env",
                 message: "What's your environment?",
                 }
-                ]).then(async answers => {
-                        await fs.appendFile(`./.env`,`\nENV=${answers.env}`, (err) => {
-                            if(err) throw err;
-                        })
+                ]).then(async (answers) => {
+                        await fs.appendFile("./.env",`\nENV=${answers.env}`, (err) => {
+                            if(err) {throw err};
+                        });
                     });
             
             resolve();
         } catch (error) {
-            reject(error)
+            reject(error);
         }
     });
-}
+};
 
 const askForStack = () => {
     return new Promise(async (resolve, reject) => {
@@ -32,14 +32,14 @@ const askForStack = () => {
                     message: "What's your stack?",
                 }
             ]).then(async answers => {
-                await fs.appendFile(`./.env`,`\nSTACK=${answers.stack}`, (err) => {
+                await fs.appendFile("./.env",`\nSTACK=${answers.stack}`, (err) => {
                     if(err) throw err;
                 })
             });
             
             resolve();
         } catch (error) {
-            reject(error)
+            reject(error);
         }
     });
 }

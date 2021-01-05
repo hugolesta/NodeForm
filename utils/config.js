@@ -29,5 +29,5 @@ module.exports = {
         {name: "source", required: true, description : "Please add new module url."}, 
         {name: "version", required: true, description : "Please add new module release version."}, 
     ],
-    "schema": schema
-}
+    schema
+};

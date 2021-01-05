@@ -4,7 +4,7 @@
   "description": "This project was created to improve all related to terraform environment automation using js technologies.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint-md": "remark ."
   },
   "repository": {
     "type": "git",
@@ -52,5 +52,8 @@
   "jest": {
     "coverageDirectory": "./coverage/",
     "collectCoverage": true
+  },
+  "remarkConfig": {
+    "plugins": ["remark-preset-lint-recommended"]
   }
 }

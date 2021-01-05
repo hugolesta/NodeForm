@@ -18,6 +18,23 @@ const checkIfTfenvWasInstalled = (program) => {
     });
 };
 
+const checkBrewExists = (program) => {
+    return new Promise( async (resolve, reject) => {
+        try {
+            let brewStatus = await checkIfTfenvWasInstalled("brew");
+            if(brewStatus) {
+                let status = await shell.exec(`brew install ${program}`);
+                console.info(`brew return the following code: ${status.code}`);
+                resolve(true);
+            } else {
+                resolve(false);
+            }
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+
 const installTfEnv = () => {
     return new Promise( async (resolve, reject) => {
         try {
@@ -31,8 +48,8 @@ const installTfEnv = () => {
                 if(!brewStatus) {
                     //Clone tfenv and install manually
                     let cloneCode = await shell.exec(`git clone ${config.TFENVGITURL} ${config.TFENVPATH}`).code;
-                    console.log(`Cloning tfenv repo and it was returned the following code ${cloneCode}`)
-                    if(cloneCode === 0) await shell.exec(`sudo ln -s ${config.TFENVPATH}/bin/* /usr/local/bin`);
+                    console.log(`Cloning tfenv repo and it was returned the following code ${cloneCode}`);
+                    if(cloneCode === 0) {await shell.exec(`sudo ln -s ${config.TFENVPATH}/bin/* /usr/local/bin`)};
                 }
             }
 
@@ -41,23 +58,6 @@ const installTfEnv = () => {
         }
     });
 };
-
-const checkBrewExists = (program) => {
-    return new Promise( async (resolve, reject) => {
-        try {
-            let brewStatus = await checkIfTfenvWasInstalled("brew");
-            if(brewStatus) {
-                let status = await shell.exec(`brew install ${program}`);
-                console.log(`bre return the following code: ${status.code}`);
-                resolve(true)
-            } else {
-                resolve(false)
-            }
-        } catch (error) {
-            reject(error);
-        }
-    });
-}
 
 module.exports = {
     checkIfTfenvWasInstalled,
