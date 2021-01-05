@@ -4,16 +4,12 @@ const prompt = require("prompt");
 const config = require("./config");
 
 const writeTerrafile = (name, source, version, dependencies = []) => {
-    return new Promise( async (resolve, reject) => {
-        try {
+    return new Promise( async (resolve) => {
             await terrafile.terraform_modules.push({name, source,version});
             await fs.writeFile("./utils/terrafile.json",JSON.stringify(terrafile), (err) => {
                 if(err) {throw err;}
             });
             resolve({status: 200, function: "writeTerrafile"});
-        } catch (error) {
-            reject(error);
-        }
     }); 
 };
 

@@ -5,18 +5,14 @@ const shell = require("shelljs");
 
 const createModulesDirectory = (folderName) => {
     return new Promise( async (resolve, reject) => {
-        try {
             const path = `${__dirname}/../environments/${folderName}/modules`;
             if(!fs.existsSync(path)) {
                 resolve(await fs.mkdirSync(path));
                 console.log(`Folder ${path} has been created`);
             }
             resolve();  
-        } catch (error) {
-            reject(error);
-        }
     });
-}
+};
 
 const deleteModulesCache = (ModulesFolder) => {
     return new Promise( async (resolve, reject) => {

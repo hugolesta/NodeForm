@@ -47,4 +47,4 @@ const askForStack = () => {
 module.exports = {
     askForEnv,
     askForStack
-}
+};

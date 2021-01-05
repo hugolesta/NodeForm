@@ -4,7 +4,6 @@ const shell = require("shelljs");
 
 const checkIfTfenvWasInstalled = (program) => {
     return new Promise( async (resolve, reject ) => {
-        try {
             commandExists(program, (err, commandExists) => {
                 if(err){
                     reject(err);
@@ -12,9 +11,7 @@ const checkIfTfenvWasInstalled = (program) => {
                 commandExists ? console.log(`${program} is already installed`) : console.log(`${program} is not installed in your S.O`);
                 resolve(commandExists);
             });
-        } catch (error) {
-            reject(error);
-        }
+        
     });
 };
 
