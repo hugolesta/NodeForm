@@ -1,16 +1,15 @@
 const fs = require("fs");
 const fsExtra = require("fs-extra");
-
 const createEnvironmentFolder = (folderName,stack) => {
     return new Promise( (resolve, reject) => {
         try {
-            let tfvarsFile = `./environments/${folderName}/${stack}/${folderName}.auto.tfvars`;
-            let vpcTfvarsFile = `./environments/${folderName}/vpc/${folderName}.auto.tfvars`;
-            if (!fs.existsSync(`./environments/`)) {fs.mkdirSync("./environments/")};
-            if (!fs.existsSync(`./environments/${folderName}`)) {
-                fs.mkdirSync(`./environments/${folderName}`);
-                console.info(`Folder ./environments/${folderName} has been created`);
-            };
+            let tfvarsFile = `${__dirname}/../environments/${folderName}/${stack}/${folderName}.auto.tfvars`;
+            let vpcTfvarsFile = `${__dirname}/../environments/${folderName}/vpc/${folderName}.auto.tfvars`;
+            if (!fs.existsSync(`${__dirname}/../environments/`)) {fs.mkdirSync("./environments/");}
+            if (!fs.existsSync(`${__dirname}/../environments/${folderName}`)) {
+                fs.mkdirSync(`${__dirname}/../environments/${folderName}`);
+                console.info(`Folder ·/environments/${folderName} has been created`);
+            }
             if(!fsExtra.ensureFileSync(vpcTfvarsFile)){
                 fs.openSync(vpcTfvarsFile,"w");
                 console.info(`The file ${vpcTfvarsFile} has been created inside stack ${stack}`);
@@ -28,4 +27,4 @@ const createEnvironmentFolder = (folderName,stack) => {
 
 module.exports = {
     createEnvironmentFolder
-}
+};

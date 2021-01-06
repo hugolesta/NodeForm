@@ -1,9 +1,8 @@
-
-const { spawn } = require("child_process");
+const spawn  = require("child_process").spawn;
 require("dotenv").config();
 
 const internalProcess = (command, parametersList,path) => {
-    if(!process.env.AWS_PROFILE) {throw Error("First you should populate the AWS_PROFILE variable, make sure to execute the manage-credentials task")};
+    if(!process.env.AWS_PROFILE) {throw Error("First you should populate the AWS_PROFILE variable, make sure to execute the manage-credentials task");}
     return new Promise((resolve, reject) => {
         try {
             const child = spawn(command, parametersList, {cwd: path});
@@ -36,4 +35,4 @@ const internalProcess = (command, parametersList,path) => {
 
 module.exports = {
     internalProcess
-}
+};

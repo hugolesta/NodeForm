@@ -9,7 +9,7 @@ const prepareSymlink = (srcPath,dstPath) => {
             reject(error);
         }
     });
-}
+};
 
 const removeSymlink = (dstPath) => {
     return new Promise(  (resolve, reject) => {
@@ -19,9 +19,9 @@ const removeSymlink = (dstPath) => {
             reject(error);
         }
     });
-}
+};
 
 module.exports = {
     prepareSymlink,
     removeSymlink
-}
+};

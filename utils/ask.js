@@ -11,7 +11,7 @@ const askForEnv = () => {
                 }
                 ]).then(async (answers) => {
                         await fs.appendFile("./.env",`\nENV=${answers.env}`, (err) => {
-                            if(err) {throw err};
+                            if(err) {throw err;}
                         });
                     });
             
@@ -31,10 +31,10 @@ const askForStack = () => {
                     name: "stack",
                     message: "What's your stack?",
                 }
-            ]).then(async answers => {
+            ]).then(async (answers) => {
                 await fs.appendFile("./.env",`\nSTACK=${answers.stack}`, (err) => {
-                    if(err) throw err;
-                })
+                    if(err) {throw err;}
+                });
             });
             
             resolve();
@@ -42,9 +42,9 @@ const askForStack = () => {
             reject(error);
         }
     });
-}
+};
 
 module.exports = {
     askForEnv,
     askForStack
-}
+};

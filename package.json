@@ -24,13 +24,27 @@
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "command-exists": "^1.2.8",
+    "dictionary-en-us": "^3.0.0",
     "dotenv": "^8.2.0",
     "fs-extra": "^9.0.0",
     "ini": "^2.0.0",
     "inquirer": "^7.1.0",
     "jake": "^10.4.6",
     "prompt": "^1.0.0",
-    "shelljs": "^0.8.3"
+    "remark": "^13.0.0",
+    "remark-frontmatter": "^3.0.0",
+    "remark-preset-lint-consistent": "^4.0.0",
+    "remark-preset-lint-markdown-style-guide": "^4.0.0",
+    "remark-preset-lint-recommended": "^5.0.0",
+    "remark-retext": "^4.0.0",
+    "retext-english": "^3.0.4",
+    "retext-repeated-words": "^3.0.0",
+    "retext-sentence-spacing": "^4.0.0",
+    "retext-spell": "^4.0.0",
+    "retext-syntax-urls": "^2.0.0",
+    "retext-usage": "^0.5.0",
+    "shelljs": "^0.8.3",
+    "unified": "^9.2.0"
   },
   "devDependencies": {
     "codecov": "^3.8.1",
@@ -54,6 +68,8 @@
     "collectCoverage": true
   },
   "remarkConfig": {
-    "plugins": ["remark-preset-lint-recommended"]
+    "plugins": [
+      "remark-preset-lint-recommended"
+    ]
   }
 }

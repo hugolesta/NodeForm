@@ -4,7 +4,6 @@ const shell = require("shelljs");
 
 const checkIfTfenvWasInstalled = (program) => {
     return new Promise( async (resolve, reject ) => {
-        try {
             commandExists(program, (err, commandExists) => {
                 if(err){
                     reject(err);
@@ -12,9 +11,7 @@ const checkIfTfenvWasInstalled = (program) => {
                 commandExists ? console.log(`${program} is already installed`) : console.log(`${program} is not installed in your S.O`);
                 resolve(commandExists);
             });
-        } catch (error) {
-            reject(error);
-        }
+        
     });
 };
 
@@ -42,16 +39,12 @@ const installTfEnv = () => {
             let tfenvStatus = await checkIfTfenvWasInstalled("tfenv");
             
             if(!tfenvStatus) {
-
-                let brewStatus = await checkBrewExists("tfenv");
-
-                if(!brewStatus) {
-                    //Clone tfenv and install manually
-                    let cloneCode = await shell.exec(`git clone ${config.TFENVGITURL} ${config.TFENVPATH}`).code;
-                    console.log(`Cloning tfenv repo and it was returned the following code ${cloneCode}`);
-                    if(cloneCode === 0) {await shell.exec(`sudo ln -s ${config.TFENVPATH}/bin/* /usr/local/bin`)};
-                }
+                //Clone tfenv and install manually
+                let cloneCode = await shell.exec(`git clone ${config.TFENVGITURL} ${config.TFENVPATH}`).code;
+                console.log(`Cloning tfenv repo and it was returned the following code ${cloneCode}`);
+                if(cloneCode === 0) {await shell.exec(`sudo ln -s ${config.TFENVPATH}/bin/* /usr/local/bin`);}
             }
+            resolve();
 
         } catch (error) {
             reject(error);
@@ -62,4 +55,4 @@ const installTfEnv = () => {
 module.exports = {
     checkIfTfenvWasInstalled,
     installTfEnv
-}
+};
