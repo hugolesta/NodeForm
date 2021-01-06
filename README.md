@@ -133,5 +133,6 @@ It'll destroy all your terraform infrastructure using the previous profile sette
 
 Contributors
 
-[![hugo_lesta][hugo_lesta]][hugo_lesta]<br/>[Hugo Lesta][hugo_lesta]
 [hugo_lesta]: https://avatars2.githubusercontent.com/u/6575715?s=400&u=f582c5ac8c63d2957e6b94842d4c533eb46100c1&v=4
+
+[![hugo_lesta][hugo_lesta]][hugo_lesta]<br/>[Hugo Lesta][hugo_lesta]
